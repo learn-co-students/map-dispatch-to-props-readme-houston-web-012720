@@ -6,10 +6,11 @@ import { addItem } from  './actions/items';
 class App extends Component {
 
   handleOnClick() {
-    this.props.store.dispatch(addItem());
+    this.props.addItem();
   }
 
   render() {
+    // debugger
     return (
       <div className="App">
         <button onClick={(event) => this.handleOnClick(event)}>
@@ -27,4 +28,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(App);
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     addItem: () => {dispatch(addItem())}
+//   }
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+// connect second arg will also take an object
+// if you pass it a functin you have to call dispatch like line 33 
+// if pass it an object, just need a key value pair for each actioni creator
+
+// export default connect(mapStateToProps, {addItem: addItem})(App);
+// ES6
+export default connect(mapStateToProps, {addItem})(App);
+
